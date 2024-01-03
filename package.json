@@ -1,10 +1,20 @@
 {
   "name": "surreal-sveltekit",
   "version": "0.0.1",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev:stack": "docker compose up -d && vite dev --host",
+    "dev": "vite dev",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+    "test": "vitest",
+    "lint": "prettier --plugin-search-dir . --check . && eslint .",
+    "format": "prettier --plugin-search-dir . --write ."
+  },
   "devDependencies": {
-    "@master/css-server": "2.0.0-beta.191",
-    "@master/css.svelte": "2.0.0-beta.191",
-    "@master/normal.css": "2.0.0-beta.191",
     "@sveltejs/adapter-auto": "2.1.0",
     "@sveltejs/adapter-node": "^1.3.1",
     "@sveltejs/kit": "1.27.2",
@@ -25,24 +35,5 @@
     "vite": "4.5.1",
     "vitest": "0.34.6",
     "zod": "3.22.4"
-  },
-  "overrides": {
-    "@master/css": "2.0.0-beta.191",
-    "@master/css.svelte": "2.0.0-beta.191",
-    "@master/normal.css": "2.0.0-beta.191",
-    "@master/keyframes.css": "2.0.0-beta.186"
-  },
-  "private": true,
-  "scripts": {
-    "multitaskum:developum": "docker compose up -d && vite dev --host",
-    "dev": "vite dev",
-    "build": "vite build",
-    "preview": "vite preview",
-    "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "test": "vitest",
-    "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write ."
-  },
-  "type": "module"
+  }  
 }

@@ -1,5 +1,6 @@
 services:
   database:
+    image: surrealdb/surrealdb:latest
     container_name: database
     restart: unless-stopped
     env_file:
@@ -18,10 +19,9 @@ services:
       - file:/db/surreal.db
     volumes:
       - ./db:/db
-    image: surrealdb/surrealdb:latest
     ports:
       - 8000:8000
 
-volumes:
-  db:
-    name: db
+# volumes:
+#   db:
+#     name: db

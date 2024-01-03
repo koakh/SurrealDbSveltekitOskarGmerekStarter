@@ -7,7 +7,7 @@ import { schema } from './schema';
 
 export const load = (async ({ locals, params }) => {
 	const post = await db.query<[Post[]]>('SELECT *, author.* FROM post WHERE slug = $slug LIMIT 1', {
-		slug: params.post_slug
+		slug: params.postSlug
 	});
 	const form = await superValidate(post[0][0] as Post, schema);
 	return { form, locals, post: post[0][0] as Post };
@@ -51,7 +51,7 @@ export const actions = {
 			throw error(500, `Error: ${err.message}`);
 		}
 
-		if (!isError) throw redirect(303, `/post/${params.post_slug}`)
+		if (!isError) throw redirect(303, `/post/${params.postSlug}`)
 		return { form }
 	}
 } satisfies Actions;

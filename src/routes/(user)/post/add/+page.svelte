@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
 	import { schema } from './schema';
 	import { slide } from 'svelte/transition';
@@ -12,7 +11,7 @@
 	import relativeTime from 'dayjs/plugin/relativeTime' 
 	dayjs.extend(relativeTime)
 
-	export let data: PageData;
+	export let data;
 
 	const { form, enhance, errors, message } = superForm(data.form, {
 		validators: schema,

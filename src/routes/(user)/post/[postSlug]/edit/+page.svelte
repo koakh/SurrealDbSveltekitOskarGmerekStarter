@@ -1,5 +1,4 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
 	import { schema } from './schema';
 	import { mcssForm } from '$lib/styles/form.mcss';
@@ -8,7 +7,7 @@
 	import relativeTime from 'dayjs/plugin/relativeTime' 
 	dayjs.extend(relativeTime)
 
-	export let data: PageData;
+	export let data;
 
 	const { form, enhance, errors, message } = superForm(data.form, {
 		validators: schema,
@@ -19,12 +18,12 @@
 
 <div class="m:auto max-w:800 p:70|0@>2xs p:70|20">
 	{#if $message}
-				<div class="bg:red-60 p:30 m:20 font:bold fg:black r:3">
-					{$message}
-				</div>
-			{/if}
-			{#if data.post?.author.id === data.locals.user?.id} 
-			<form
+		<div class="bg:red-60 p:30 m:20 font:bold fg:black r:3">
+			{$message}
+		</div>
+	{/if}
+	{#if data.post?.author.id === data.locals.user?.id} 
+		<form
 			method="POST"
 			action={`/post/${data.post?.slug}/edit/?/edit`}
 			use:enhance
@@ -45,9 +44,7 @@
 				<textarea id="content" name="content" bind:value={$form.content} autocomplete="off" />
 				{#if $errors.content}<span class="invalid">{$errors.content}</span>{/if}
 			</div>
-
 			<button class={mcssButton}>Modify post</button>
-		</form>
-		
+		</form>		
 		{/if}
 </div>

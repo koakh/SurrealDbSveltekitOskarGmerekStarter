@@ -8,7 +8,6 @@ const config = {
 		adapter: adapter(),
 		alias: {
 			$types: 'src/lib/types'
-			// '$master.css': './master.css.ts'
 		}
 	}
 };

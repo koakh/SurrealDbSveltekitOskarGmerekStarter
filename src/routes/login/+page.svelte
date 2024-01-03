@@ -1,11 +1,10 @@
 <script lang="ts">
-	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
 	import { schema } from './schema';
 	import { mcssForm } from '$lib/styles/form.mcss';
 	import { mcssButton } from '$lib/styles/button.mcss';
 
-	export let data: PageData;
+	export let data;
 
 	const { form, enhance, errors, message } = superForm(data.form, {
 		validators: schema,

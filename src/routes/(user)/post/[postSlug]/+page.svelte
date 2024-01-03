@@ -1,11 +1,10 @@
 <script lang="ts">
 	import dayjs from 'dayjs';
 	import relativeTime from 'dayjs/plugin/relativeTime' 
-	import type { PageData } from './$types';
 	import { superForm } from 'sveltekit-superforms/client';
 	import { schema } from './schema';
 
-	export let data: PageData;
+	export let data;
 	dayjs.extend(relativeTime)
 
 	const { enhance, message } = superForm(data.form, {
@@ -17,10 +16,10 @@
 
 <div class="m:auto max-w:800 p:70|0@>2xs p:70|20">
 	{#if $message}
-				<div class="bg:red-60 p:30 m:20 font:bold fg:black r:3">
-					{$message}
-				</div>
-			{/if}
+			<div class="bg:red-60 p:30 m:20 font:bold fg:black r:3">
+				{$message}
+			</div>
+		{/if}
 	<div class="bg:yellow-70 fg:black r:5 p:10 overflow:hidden">
 		<div class="flex ">
 			{#if data.post?.author.id === data.locals.user?.id} 
@@ -42,5 +41,4 @@
 			{data.post?.content}
 		</div>
 	</div>
-
 </div>

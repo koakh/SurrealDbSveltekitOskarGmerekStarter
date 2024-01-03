@@ -7,7 +7,7 @@ type UsernameLookup = {
 }
 
 export const schema = z.object({
-	username: z
+	'username': z
 		.string()
 		.min(
 			7,
@@ -20,13 +20,14 @@ export const schema = z.object({
 			'Yikes! That password is like a cardboard shield in a medieval battle. Reinforce it, brave soul! Minimum 13 chars.'
 		)
 })
-.refine(async (data) => {
-	const query = await db
+	.refine(async (data) => {
+		const query = await db
 			.query<[UsernameLookup[]]>('SELECT * FROM username_lookup WHERE username = type::string($username)', {
 				username: data.username
-			}) 
-	
-			return !query[0][0]}, {
-	message: "Taken, this username is. Take again, you can't.",
-	path: ["username"]
-  });
+			})
+
+		return !query[0][0]
+	}, {
+		message: "Taken, this username is. Take again, you can't.",
+		path: ["username"]
+	});

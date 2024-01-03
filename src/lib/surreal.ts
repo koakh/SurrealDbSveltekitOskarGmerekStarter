@@ -3,7 +3,8 @@ import { Surreal } from 'surrealdb.js';
 import type {Writable } from 'svelte/store';
 
 const MAX_RETRIES = 5;
-const RETRY_TIMEOUT = 2000; // 2 seconds
+// 2 seconds
+const RETRY_TIMEOUT = 2000;
 const DB_URL = PUBLIC_SURREALDB_URL;
 let _db: Surreal;
 
@@ -42,7 +43,6 @@ export const db = database.instance;
 
 export const observeLive = async <T extends Record<string, unknown>>(thing: string, store: Writable<T[]>) => {
 		await db.live(thing, ({ action, result }) => {
-
 			// TODO: on 'CREATE' and 'UPDATE' author (user) object is not fetched, this results in undefined in author.username
 			switch (action) {
 				case 'CREATE':

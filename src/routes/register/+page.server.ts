@@ -13,7 +13,7 @@ export const load = (async ({ locals }) => {
 export const actions = {
 	register: async ({ request, locals }) => {
 		if (locals.user) throw redirect(303, '/');
-		
+
 		const form = await superValidate(request, schema);
 		const { username, 'new-password': password } = form.data;
 

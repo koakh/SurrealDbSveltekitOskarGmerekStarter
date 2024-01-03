@@ -1,5 +1,10 @@
-{ 
-    "editor.quickSuggestions": {
-        "strings": true
-    }
+{
+	"editor.quickSuggestions": {
+		"strings": true
+	},
+	"cSpell.words": [
+		"etoro",
+		"mcss",
+		"superforms"
+	]
 }

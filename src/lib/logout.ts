@@ -1,7 +1,7 @@
 import { redirect, type RequestEvent } from '@sveltejs/kit';
 import { db } from './surreal';
 
-export const logout = async (event: RequestEvent, redirect_to?: string) => {
+export const logout = async (event: RequestEvent, redirectTo?: string) => {
 	event.locals.user = undefined;
 	event.cookies.set('token', '', {
 		path: '/',
@@ -11,8 +11,8 @@ export const logout = async (event: RequestEvent, redirect_to?: string) => {
 		maxAge: -1
 	});
 	await db.invalidate();
-	if (redirect_to) {
-		throw redirect(302, redirect_to);
+	if (redirectTo) {
+		throw redirect(302, redirectTo);
 	} else {
 		throw redirect(302, '/login');
 	}

@@ -4,9 +4,7 @@
 
 	export let user: User | undefined;
 
-	const mcssNav =
-		'rel flex bg:yellow-70 w:full top:0 h:70 fg:gray-10/.75 f:bold ai:center px:30  px:2@<2xs';
-
+	const mcssNav = 'rel flex bg:yellow-70 w:full top:0 h:70 fg:gray-10/.75 f:bold ai:center px:30  px:2@<2xs';
 </script>
 
 {#if user}
@@ -23,9 +21,9 @@
 			</div>
 			{/if}
 		<div class="flex  w:full jc:right px:10_button fg:black_button:hover">
-            <form method="POST" action="/?/logout">
-                <button type='submit' class="font:bold">Log out</button>
-            </form>
+			<form method="POST" action="/?/logout">
+					<button type='submit' class="font:bold">Log out</button>
+			</form>
 		</div>
 	</div>
 {:else}

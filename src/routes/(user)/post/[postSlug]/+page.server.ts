@@ -8,7 +8,7 @@ import { schema } from './schema';
 export const load = (async ({ params, locals }) => {
 	const form = await superValidate(schema);
 	const post = await db.query<[Post[]]>('SELECT *, author.* FROM post WHERE slug = $slug LIMIT 1', {
-		slug: params.post_slug
+		slug: params.postSlug
 	});
 	return { form, locals, post: post[0][0] as Post };
 }) satisfies PageServerLoad;
